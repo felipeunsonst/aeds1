@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -235,39 +236,44 @@ void metodo0720(){
 }
 
 void metodo07E1(){
-	/*
-	int n; 
+	int n;
 	printf("digite um valor inteiro:\n");
 	scanf("%d", &n);
 
-	//12 --- 6, 4, 2
-	int divisor = 2; 
-	char numeros[100];
-	
-	for(int i = 0; i<n; i++){
-		int resultado = n/divisor;
-		if(i%divisor==0){
-			if(divisor%2==0){
-				numeros[i] == resultado;
-			}
+	FILE *arq;
+	arq = fopen("RESULTADO11.txt", "w");
+
+	for(int i = n; i>0 ; i--){
+		if(i%2==0 && n%i==0){
+			fprintf(arq, "%d ", i);
 		}
-		divisor++;
 	}
 
-	FILE *arq1;
-	arq1 = fopen("arquivoE7.txt", "w");
-	if(arq1==NULL){
-		printf("erro");
-		return 1;
-	}
-
-	fprintf(arq1, "%s", numeros);
-	fclose(arq1);
-	*/
-	
+	fclose(arq);
+	printf("a soma dos resultados foram gravadas no arquivo RESULTADO11\n");
 }
 
 void metodo07E2(){
+
+
+    FILE *arq = fopen("RESULTADO12.txt", "r");
+    
+    if (arq == NULL) {
+        perror("Erro ao abrir o arquivo");
+        return;
+    }
+
+    char c[100];
+    int contador = 0;
+
+    while (fscanf(arq, "%99s", c) == 1) { // Read up to 99 characters
+        if (c[0] == 'D' || c[0] == 'd') {
+            contador++;
+        }
+    }
+
+    fclose(arq); // Always close the file after finishing
+    printf("Sao %d palavras que comecam com D ou d\n", contador);
 
 }
 
