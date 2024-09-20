@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 void recursiva1(int z, int atual){
     if(z>0){
@@ -217,20 +218,44 @@ void metodo0620(){
     printf("o %d termo par da sequencia de fibonacci e: %d\n", n, resultado);
 }
 
-void recursiva11(){
-
+int recursiva11(int y, int vezes, int soma, int expoente){
+	if(vezes -1 == 0){
+		return soma;
+	}
+	
+	return recursiva11(y, vezes-1, soma + (int)pow(y, expoente), expoente + 2);
 }
 
 void metodo06E1(){
+	int x;
+	printf("Digite o valor da base:\n");
+	scanf("%d", &x);
 
+	int n;
+	printf("Digite a quantidade de vezes que o expoente irá aumentar em 2:\n");
+	scanf("%d", &n);
+
+	int resultado = recursiva11(x, n, 1, 2);
+	printf("A soma é: %d\n", resultado);
 }
 
-void recursiva12(){
+double recursiva12(int termos, int numerador, int denominador, unsigned long long fatorialAtual) {
+    if (termos == 0) {
+        return 1;  
+    }
 
+    double termoAtual = (double) numerador / fatorialAtual;
+
+    return termoAtual + recursiva12(termos - 1, numerador * 3 + 1, denominador + 1, fatorialAtual * (denominador + 1));
 }
 
-void metodo06E2(){
+void metodo06E2() {
+    int n;
+    printf("Digite o número de termos:\n");
+    scanf("%d", &n);
 
+    double resultado = recursiva12(n, 2, 3, 6);
+    printf("O valor de e é: %lf\n", resultado);
 }
 
 
