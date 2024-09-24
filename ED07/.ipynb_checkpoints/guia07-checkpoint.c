@@ -1,3 +1,5 @@
+//FELIPE COSTA UNSONST
+//1523384
 
 #include <stdio.h>
 #include <math.h>
@@ -255,7 +257,6 @@ void metodo07E1(){
 
 void metodo07E2(){
 
-
     FILE *arq = fopen("RESULTADO12.txt", "r");
     
     if (arq == NULL) {
@@ -266,13 +267,13 @@ void metodo07E2(){
     char c[100];
     int contador = 0;
 
-    while (fscanf(arq, "%99s", c) == 1) { // Read up to 99 characters
+    while (fscanf(arq, "%99s", c) == 1) {
         if (c[0] == 'D' || c[0] == 'd') {
             contador++;
         }
     }
 
-    fclose(arq); // Always close the file after finishing
+    fclose(arq); 
     printf("Sao %d palavras que comecam com D ou d\n", contador);
 
 }
